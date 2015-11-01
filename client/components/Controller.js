@@ -1,5 +1,4 @@
 const React = require('react');
-const {PropTypes} = React;
 
 class Controller extends React.Component {
   render() {

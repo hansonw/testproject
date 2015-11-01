@@ -3,12 +3,14 @@ require('font-awesome-webpack');
 
 const React = require('react');
 const Controller = require('./components/Controller');
+const ConnectionManager = require('./ConnectionManager');
 
 // prevent iOS from scorlling the page
 document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 document.addEventListener('touchstart', function() {}, false);
 
 window.onload = () => {
+  const _manager = new ConnectionManager();
   React.render(
     <Controller />,
     document.getElementById('root'),
