@@ -17,8 +17,9 @@ class Controller extends React.Component {
         // Wait until startTime and then start playing video
         setTimeout(() => {
           // ASSUMES this.player is set
-          alert("yo!");
-          //this.player.playVideo();
+          // alert("yo!");
+          document.getElementById('testsound').play();
+          // this.player.playVideo();
         }, startTime-curTime);
       } else {
         // TODO: Need to extrapolate if timestamp is in the past
