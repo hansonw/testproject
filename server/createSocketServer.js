@@ -29,6 +29,7 @@ function createSocketServer(expressServer) {
 
     socket.on(constants.ClientActions.CLIENT_READY, () => {
       ready[socket.id] = true;
+      console.log('client %s ready', socket.id);
       let clientIds = Object.keys(clients);
       if (clientIds.length < 2) {
         return;
@@ -42,6 +43,7 @@ function createSocketServer(expressServer) {
 
       // Start in 5 seconds!
       let startTime = Date.now() + PLAY_DELAY_MS;
+      console.log('starting at %d!', startTime);
       for (let id of clientIds) {
         clients[id].emit(constants.ServerActions.PLAY_SONG, {startTime});
       }

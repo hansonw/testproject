@@ -39,7 +39,7 @@ class Controller extends React.Component {
         onReady={this._onReady}
         onStateChange={this._onStateChange}
         opts={opts}
-        url={'https://www.youtube.com/watch?v=LiAWP_mcIzY'}
+        url={'https://www.youtube.com/watch?v=7UANB4j35Ps'}
       />
     );
   }
@@ -67,9 +67,8 @@ class Controller extends React.Component {
    * YouTube Player event-handlers
    */
   _onReady(event) {
-    // Once YouTube Player is loaded, start buffering
+    // Get a handle to the underlying YouTube player.
     this.player = event.target;
-    this.player.seekTo(0, true);  // this will start buffering
   }
 
   _onStateChange(event) {
