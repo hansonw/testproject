@@ -11,9 +11,9 @@ document.addEventListener('touchmove', function(e) { e.preventDefault(); }, fals
 document.addEventListener('touchstart', function() {}, false);
 
 window.onload = () => {
-  const _manager = new ConnectionManager();
+  const manager = new ConnectionManager();
   React.render(
-    <Controller />,
+    <Controller connectionManager={manager} />,
     document.getElementById('root'),
   );
 };
