@@ -1,3 +1,4 @@
+require('babel-polyfill');
 require('./style.css');
 require('font-awesome-webpack');
 
