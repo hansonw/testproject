@@ -3,8 +3,9 @@ const YouTube = require('react-youtube');
 
 class Controller extends React.Component {
   constructor() {
+    super();
     this._onReady = this._onReady.bind(this);
-    this.player = NULL;
+    this.player = null;
   }
 
   componentDidMount() {
@@ -16,7 +17,8 @@ class Controller extends React.Component {
         // Wait until startTime and then start playing video
         setTimeout(() => {
           // ASSUMES this.player is set
-          this.player.playVideo();
+          alert("yo!");
+          //this.player.playVideo();
         }, startTime-curTime);
       } else {
         // TODO: Need to extrapolate if timestamp is in the past
@@ -30,13 +32,13 @@ class Controller extends React.Component {
       height: '390',
       width: '640',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+        autoplay: 0
       }
     };
 
     return (
       <YouTube
-        url={'http://www.youtube.com/watch?v=kG9KSWYg-Jc'}
+        url={'https://www.youtube.com/watch?v=LiAWP_mcIzY'}
         opts={opts}
         onReady={this._onReady}
       />
@@ -46,6 +48,7 @@ class Controller extends React.Component {
   _onReady(event) {
     // Call this when YouTube player is loaded / buffered
     console.log('client is ready');
+    this.player = event.target;
     this.props.connectionManager.signalReady();
   }
 }

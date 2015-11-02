@@ -36,7 +36,7 @@ function createSocketServer(expressServer) {
 
       for (let id of clientIds) {
         if (!ready[id]) {
-          return;
+          //return;
         }
       }
 
