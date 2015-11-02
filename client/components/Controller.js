@@ -84,6 +84,7 @@ class Controller extends React.Component {
   _bufferingPlayStarted() {
     let BUFFER_TIME = 2000;  // wait a bit before pinging that we are ready
     this.player.pauseVideo();
+    this.player.seekTo(0);
 
     setTimeout(() => {
       // YouTube player is loaded / buffered

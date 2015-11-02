@@ -3,7 +3,7 @@
 const constants = require('../common/constants');
 
 const ACCEPTABLE_RANGE = 5;
-const MIN_ITERATIONS = 20;
+const MIN_ITERATIONS = 50;
 const MAX_ITERATIONS = 100;
 
 function standardDeviation(n, sum, sumSq) {
