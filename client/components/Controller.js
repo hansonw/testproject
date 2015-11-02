@@ -1,4 +1,5 @@
 const React = require('react');
+const YouTube = require('react-youtube');
 
 class Controller extends React.Component {
   componentDidMount() {
@@ -13,11 +14,26 @@ class Controller extends React.Component {
   }
 
   render() {
+    const opts = {
+      height: '390',
+      width: '640',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    };
+
     return (
-      <div>
-        hello world
-      </div>
+      <YouTube
+        url={'http://www.youtube.com/watch?v=kG9KSWYg-Jc'}
+        opts={opts}
+        onReady={this._onReady}
+      />
     );
+  }
+
+  _onReady(event) {
+    // access to player in all event handlers via event.target
+    //event.target.pauseVideo();
   }
 }
 

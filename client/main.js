@@ -1,6 +1,5 @@
 require('babel-polyfill');
 require('./style.css');
-require('font-awesome-webpack');
 
 const React = require('react');
 const Controller = require('./components/Controller');
