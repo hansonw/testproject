@@ -11,9 +11,15 @@ function createSocketServer(expressServer) {
 
   const io = require('socket.io')(server);
   io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('user %s connected', socket.id);
     ready[socket.id] = false;
     clients[socket.id] = socket;
+
+    socket.on('disconnect', () => {
+      console.log('user %s disconnected', socket.id);
+      delete ready[socket.id];
+      delete clients[socket.id];
+    });
 
     socket.on(constants.ClientActions.TIME_REQUEST, () => {
       socket.emit(constants.ServerActions.TIME_RESPONSE, {
@@ -24,6 +30,10 @@ function createSocketServer(expressServer) {
     socket.on(constants.ClientActions.CLIENT_READY, () => {
       ready[socket.id] = true;
       let clientIds = Object.keys(clients);
+      if (clientIds.length < 2) {
+        return;
+      }
+
       for (let id of clientIds) {
         if (!ready[id]) {
           return;
